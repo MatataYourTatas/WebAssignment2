@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/signinstylesheet.css">
+    </head>
+    <body>
+        <div id="invisible" class="invisibleDiv" hidden="true">
+            <ul>
+                <li>
+                    <p>Number of Clicks:&nbsp</p>
+                    <p id="numberClicks">0</p>
+                </li>
+                <li>
+                    <p>Number of Key Presses:&nbsp</p>
+                    <p id="numberKeyPresses">0</p>
+                </li>
+                <li>
+                    <p>Number of Characters Inputted:&nbsp</p>
+                    <p id="numberCharInput">0</p>
+                </li>
+                <li>
+                    <p>Time in Page:&nbsp</p>
+                    <p id="totalTime">0</p>
+                    <p>&nbspseconds</p>
+                </li>
+            </ul>
+        </div>
+        <h1>Sign in to your Mentoring Account</h1>
+        <div class="signinwrapper">
+            <h2>Input your credentials:</h2>
+            <form onsubmit="return makeVisible()">
+                <div class="input">
+                    <h3>User:</h3>
+                    <input id="input1" type="text" required="required" minlength="5" maxlength="12" pattern="^[A-Z].*[^a-zA-Z]$" title="Must start with capital letter and end with a number. 5-12 characters">
+                </div>
+                <div class="input">
+                    <h3>Password:</h3>
+                    <input id="input2" type="text" required="required" minlength="12" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z]).{12,}" title="Must contain a lower and uppercase letter, number and special character">
+                </div>
+                <input id="btn" type="submit">
+            </form>
+            <a id="btn" href="home">Continue</a>
+        </div>
+    </body>
+    <script>
+        let page = document.querySelector("body");
+        let pageClicks = 0;
+
+        page.addEventListener("click", function() {
+            pageClicks += 1;
+            console.log("Page clicked: " +pageClicks);
+        });
+
+        let keyPresses = 0
+
+        page.addEventListener("keypress", function() {
+            keyPresses += 1;
+            console.log("Key pressed: " + keyPresses);
+        });
+
+        let input1 = document.getElementById("input1");
+        let charInputs = 0;
+
+        input1.addEventListener("input", function() {
+            charInputs++;
+            console.log("Char inputted on input1: " + charInputs);
+        })
+
+        let input2 = document.getElementById("input2");
+
+        input2.addEventListener("input", function() {
+            charInputs++;
+            console.log("Char inputted on input2: " + charInputs);
+        })
+
+        var startTime;
+
+        window.onload = function() {
+            startTime = performance.now();
+            console.log("Start time is: " + startTime);
+        };
+
+        function makeVisible() {
+            let box = document.getElementById("invisible");
+            let l1 = document.getElementById("numberClicks").innerHTML = pageClicks;
+            let l2 = document.getElementById("numberKeyPresses").innerHTML = keyPresses;
+            let l3 = document.getElementById("numberCharInput").innerHTML = charInputs;
+
+            let finalTime = performance.now();
+            let totalTime = Math.round((finalTime - startTime) / 1000, 2);
+
+            let l4 = document.getElementById("totalTime").innerHTML = totalTime;
+            box.hidden = false;
+            return false;
+        }
+    </script>
+</html>

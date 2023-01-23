@@ -1,0 +1,83 @@
+:root {
+    --background: #F06A1E;
+    --darkbackground: #c75210;
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    background-color: var(--background);
+    background-image: url('/6943.jpg');
+    background-size: 90% auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: monospace;
+    font-size: 3em;
+    text-align: center;
+    padding: 1em 0 1em;
+    color: darkslategray;
+    font-weight: bolder;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.leftdiv {
+    background: rgba(243, 187, 135, .6);
+    max-width: 50%;
+    height: 100vh;
+    padding-left: 5%;
+    display: flex;
+    flex-direction: column;
+}
+
+.innerdiv {
+    background: rgba(255, 228, 196, .8);
+    border-radius: 20px;
+    height: 70%;
+    width: 80%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 6em;
+    padding-bottom: 6em;
+}
+
+button {
+    background-color: var(--background);
+    color: white;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 6px gray;
+    width: 40%;
+    min-width: 6em;
+    padding: 30px;
+    font-family: monospace;
+    font-size: 200%;
+    font-weight: bolder;
+}
+
+button:hover {
+    background-color: var(--darkbackground);
+    color: darkgray;
+}
+
+button:active {
+    background-color: var(--darkbackground);
+    color: darkgray;
+    box-shadow: 0 2px #666;
+    transform: translateY(4px);
+}
