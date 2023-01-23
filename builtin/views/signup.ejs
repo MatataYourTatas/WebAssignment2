@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="/signupstylesheet.css">
+    </head>
+    <body>
+        <div id="invisible" class="invisibleDiv" hidden="true">
+            <ul>
+                <li>
+                    <p>Number of Clicks:&nbsp</p>
+                    <p id="numberClicks">0</p>
+                </li>
+                <li>
+                    <p>Number of Key Presses:&nbsp</p>
+                    <p id="numberKeyPresses">0</p>
+                </li>
+                <li>
+                    <p>Number of Characters Inputted:&nbsp</p>
+                    <p id="numberCharInput">0</p>
+                </li>
+                <li>
+                    <p>Time in Page:&nbsp</p>
+                    <p id="totalTime">0</p>
+                    <p>&nbspseconds</p>
+                </li>
+            </ul>
+        </div>
+        <h1>Create an account as a Mentor or Mentee!</h1>
+        <form onsubmit="return makeVisible()">
+        <div class="wrapper">
+                <div class="leftwrapper"> 
+                    <div class="input">
+                        <h3>User Type</h3>
+                        <select>
+                            <option>Mentor</option>
+                            <option>Mentee</option>
+                        </select>
+                    </div>
+                    <div class="input">
+                        <h3>Gender</h3>
+                        <select>
+                            <option>Female</option>
+                            <option>Male</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="input">
+                        <h3>Language</h3>
+                        <select>
+                            <option>Dutch</option>
+                            <option>English</option>
+                            <option>Chinese</option>
+                            <option>Spanish</option>
+                            <option>French</option>
+                            <option>Russian</option>
+                            <option>Arabic</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div id="input1" class="input">
+                        <h3>Name</h3>
+                        <input type="text" required="required">
+                    </div>
+                    <div id="input2" class="input">
+                        <h3>User ID</h3>
+                        <input type="text" required="required" minlength="5" maxlength="12" title="Must start with capital letter and end with a number. 5-12 characters">
+                    </div>
+                    <div id="input3" class="input">
+                        <h3>Password</h3>
+                        <input type="password" required="required" minlength="12">
+                    </div>
+                    <div id="input4" class="input">
+                        <h3>Email</h3>
+                        <input type="email" required="required">
+                    </div>
+                    <div id="input5" class="input">
+                        <h3>Country</h3>
+                        <input type="text" required="required" minlength="1">
+                    </div>
+                    <div id="input6" class="input">
+                        <h3>ZipCode</h3>
+                        <input type="text" required="required" minlength="1">
+                    </div>
+                </div>
+                <div class="rightwrapper">
+                    <h3>About Yourself</h3>
+                    <textarea name="" id="input7" cols="20" rows="3"></textarea>
+                    <input id="btn" type="submit">
+                    <a id="btn" href="home">Continue</a>
+                </div>
+            </div>
+        </form>
+    </body>
+    <script>
+        let page = document.querySelector("body");
+        let pageClicks = 0;
+
+        page.addEventListener("click", function() {
+            pageClicks += 1;
+            console.log("Page clicked: " +pageClicks);
+        });
+
+        let keyPresses = 0
+
+        page.addEventListener("keypress", function() {
+            keyPresses += 1;
+            console.log("Key pressed: " + keyPresses);
+        });
+
+        let input1 = document.getElementById("input1");
+        let input2 = document.getElementById("input2");
+        let input3 = document.getElementById("input3");
+        let input4 = document.getElementById("input4");
+        let input5 = document.getElementById("input5");
+        let input6 = document.getElementById("input6");
+        let input7 = document.getElementById("input7");
+        let charInputs = 0;
+
+        input1.addEventListener("input", function() {
+            charInputs++;
+            console.log("Char inputted on input1: " + charInputs);
+        })
+
+        input2.addEventListener("input", function() {
+            charInputs++;
+            console.log("Char inputted on input2: " + charInputs);
+        })
+
+        input3.addEventListener("input", function() {
+            charInputs++;
+            console.log("Char inputted on input3: " + charInputs);
+        })
+
+        input4.addEventListener("input", function() {
+            charInputs++;
+            console.log("Char inputted on input4: " + charInputs);
+        })
+
+        input5.addEventListener("input", function() {
+            charInputs++;
+            console.log("Char inputted on input5: " + charInputs);
+        })
+
+        input6.addEventListener("input", function() {
+            charInputs++;
+            console.log("Char inputted on input6: " + charInputs);
+        })
+
+        input7.addEventListener("input", function() {
+            charInputs++;
+            console.log("Char inputted on input7: " + charInputs);
+        })
+
+        var startTime;
+
+        window.onload = function() {
+            startTime = performance.now();
+            console.log("Start time is: " + startTime);
+        };
+
+        function makeVisible() {
+            let box = document.getElementById("invisible");
+            let l1 = document.getElementById("numberClicks").innerHTML = pageClicks;
+            let l2 = document.getElementById("numberKeyPresses").innerHTML = keyPresses;
+            let l3 = document.getElementById("numberCharInput").innerHTML = charInputs;
+
+            let finalTime = performance.now();
+            let totalTime = Math.round((finalTime - startTime) / 1000, 2);
+
+            let l4 = document.getElementById("totalTime").innerHTML = totalTime;
+            box.hidden = false;
+            return false;
+        }
+    </script>
+</html>
